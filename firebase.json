@@ -4,7 +4,36 @@
   },
   "hosting": {
     "public": "build/web",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [{ "source": "**", "destination": "/index.html" }]
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "registrovehiculos-e6040",
+          "appId": "1:82127741625:android:392982dcaf75a3ea48f168",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "registrovehiculos-e6040",
+          "configurations": {
+            "android": "1:82127741625:android:392982dcaf75a3ea48f168",
+            "web": "1:82127741625:web:987eeb4078914b2248f168"
+          }
+        }
+      }
+    }
   }
 }
