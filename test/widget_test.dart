@@ -1,30 +1,33 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:registro_vehiculos/main.dart';
+import 'package:registro_vehiculos/utils/validadores.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  group('Validadores', () {
+    test('campos vacíos no son válidos', () {
+      expect(Validadores.placa(''), isNotNull);
+      expect(Validadores.placa('   '), isNotNull);
+      expect(Validadores.texto(null, 'La marca'), isNotNull);
+      expect(Validadores.anio(''), isNotNull);
+      expect(Validadores.nombre('', 'El propietario'), isNotNull);
+    });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    test('placa', () {
+      expect(Validadores.placa('ABC-123-D'), isNull);
+      expect(Validadores.placa('abc1234'), isNull);
+      expect(Validadores.placa('AB'), isNotNull);
+      expect(Validadores.placa('--------'), isNotNull);
+    });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    test('año', () {
+      expect(Validadores.anio('2020'), isNull);
+      expect(Validadores.anio('1800'), isNotNull);
+      expect(Validadores.anio('abcd'), isNotNull);
+      expect(Validadores.anio('${DateTime.now().year + 5}'), isNotNull);
+    });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    test('nombre solo letras', () {
+      expect(Validadores.nombre('José Pérez', 'El propietario'), isNull);
+      expect(Validadores.nombre('Juan123', 'El propietario'), isNotNull);
+    });
   });
 }
