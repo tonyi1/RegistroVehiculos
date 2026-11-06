@@ -46,3 +46,18 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+# --- Credenciales y datos sensibles (NO subir a GitHub) ---
+lib/firebase_options.dart
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+macos/Runner/GoogleService-Info.plist
+.firebaserc
+.firebase/
+firebase-debug.log
+*.env
+.env*
+# Firma del APK
+*.jks
+*.keystore
+android/key.properties
