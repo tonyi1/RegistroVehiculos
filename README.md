@@ -3,7 +3,7 @@
 Aplicación móvil hecha con **Flutter** para registrar vehículos y consultarlos.
 Los datos se guardan en **Cloud Firestore (Firebase)**.
 
-- **URL web:** _pendiente_
+- **URL web:** https://registrovehiculos-e6040.web.app
 - **APK:** _pendiente_ (en la sección Releases del repositorio)
 
 ## Funciones
@@ -61,7 +61,7 @@ firebase.json                     # Configuración de Firestore y Hosting
 ## Configuración desde cero
 
 ```bash
-git clone https://github.com/tonyi1/registro_vehiculos.git
+git clone https://github.com/tonyi1/RegistroVehiculos.git
 cd registro_vehiculos
 flutter pub get
 ```
